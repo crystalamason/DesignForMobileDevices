@@ -30,9 +30,9 @@ self.addEventListener('fetch', function(event) {
                                             
     if (event.request.url.indexOf('https://code.getmdl.io') !== -1) {
          fetch(event.request).catch(catchFunction, {mode: 'no-cors'});
+    } else {
+        fetch(event.request).catch(catchFunction);   
     }
-    
-    fetch(event.request).catch(catchFunction);
   });
 });
 
