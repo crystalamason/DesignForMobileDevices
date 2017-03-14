@@ -1,14 +1,14 @@
 {
-    
  "name": "MyCatPage",
-    "short_name": "My Cat",
-    "background_color": "#2196F3",
-    "theme_color": "#2196F3",
+"short_name": "MyCat",
+"background_color": "#2196F3",
+"theme_color": "#2196F3",
+
  "icons": [
   {
    "src": "android-icon-36x36.png",
    "sizes": "36x36",
-   "type": "image\/png",
+   "type": "image/png",
    "density": "0.75"
   },
   {
