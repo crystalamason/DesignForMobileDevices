@@ -16,7 +16,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
+  event.respondWith(function(){
       
     var catchFunction = function() {
       return caches.match(event.request).then(function(response) {
@@ -33,7 +33,7 @@ self.addEventListener('fetch', function(event) {
     }
     
     fetch(event.request).catch(catchFunction);
-  );
+  });
 });
 
 
