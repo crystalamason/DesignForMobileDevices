@@ -17,7 +17,8 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    fetch(event.request).catch(function() {
+      
+    var catchFunction = function() {
       return caches.match(event.request).then(function(response) {
         if (response) {
           return response;
@@ -25,6 +26,30 @@ self.addEventListener('fetch', function(event) {
           return caches.match('offline.html');
         }
       });
-    })
+    };
+                                            
+    if (event.request.url.indexOf('https://code.getmdl.io') !== -1) {
+         fetch(event.request).catch(catchFunction, {mode: 'no-cors'});
+    }
+    
+    fetch(event.request).catch(catchFunction);
   );
 });
+
+
+
+//fetch(request, {mode: 'no-cors'})
+//.then(function(response) {
+//  console.log(response); 
+//}).catch(function(error) {  
+//  console.log('Request failed', error)  
+//});
+//
+//
+//self.addEventListener('fetch', function(event) {
+//  if (event.request.url.indexOf('https://code.getmdl.io') !== -1) {
+//    event.respondWith(
+//      fetch('gerbil.jpg')
+//    );
+//  }
+//})
