@@ -2,7 +2,9 @@ var CACHE_NAME = 'gih-cache';
 var CACHED_URLS = [
   'offline.html',
   'mystyles.css',
-  'dino.png'
+  'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en',
+    'https://fonts.googleapis.com/icon?family=Material+Icons',
+    'https://code.getmdl.io/1.3.0/material.teal-red.min.css'
 ];
 
 self.addEventListener('install', function(event) {
