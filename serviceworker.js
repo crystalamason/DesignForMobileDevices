@@ -1,7 +1,7 @@
 var CACHE_NAME = 'gih-cache';
 var CACHED_URLS = [
   'offline.html',
-  'mystyles.css’,
+  'mystyles.css',
   'dino.png'
 ];
 
@@ -21,23 +21,3 @@ self.addEventListener('fetch', function(event) {
     }));
   }
 });
-
-
-
-
-
-//fetch(request, {mode: 'no-cors'})
-//.then(function(response) {
-//  console.log(response); 
-//}).catch(function(error) {  
-//  console.log('Request failed', error)  
-//});
-//
-//
-//self.addEventListener('fetch', function(event) {
-//  if (event.request.url.indexOf('https://code.getmdl.io') !== -1) {
-//    event.respondWith(
-//      fetch('gerbil.jpg')
-//    );
-//  }
-//})
