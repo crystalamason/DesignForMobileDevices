@@ -6,18 +6,23 @@ var CACHED_URLS = [
 ];
 
 self.addEventListener('install', function(event) {
-  console.log('install');
-});
-
-self.addEventListener('activate', function(event) {
-  console.log('activate');
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.addAll(CACHED_URLS);
+    })
+  );
 });
 
 self.addEventListener('fetch', function(event) {
-  if (event.request.url.indexOf('material.teal-red.min.css') !== -1) {
-    console.log('Fetch request for:', event.request.url);
-    event.respondWith(new Response('header {background: green url("")!important}', {
-      headers: { 'Content-Type': 'text/css' }
-    }));
-  }
+  event.respondWith(
+    fetch(event.request).catch(function() {
+      return caches.match(event.request).then(function(response) {
+        if (response) {
+          return response;
+        } else if (event.request.headers.get('accept').includes('text/html')) {
+          return caches.match('offline.html');
+        }
+      });
+    })
+  );
 });
