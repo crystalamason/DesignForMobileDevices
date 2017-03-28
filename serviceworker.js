@@ -4,7 +4,6 @@ var CACHED_URLS = [
   'first.html',
     // Stylesheets and fonts
     'min-style.css',
-    'mystyles.css',
     'styles.css',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en',
@@ -22,6 +21,12 @@ var CACHED_URLS = [
     'eventsimages/example-work03.jpg',
     'eventsimages/example-work04.jpg',
     'eventsimages/example-work08.jpg',
+    'appimages/android-icon-36x36.png',
+    'appimages/android-icon-48x48.png',
+    'appimages/android-icon-72x72.png',
+    'appimages/android-icon-96x96.png',
+    'appimages/android-icon-144x144.png',
+    'appimages/android-icon-192x192.png'
 
 self.addEventListener('install', function(event) {
   // Cache everything in CACHED_URLS. Installation will fail if something fails to cache
