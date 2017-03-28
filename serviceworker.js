@@ -27,6 +27,7 @@ var CACHED_URLS = [
     'appimages/android-icon-96x96.png',
     'appimages/android-icon-144x144.png',
     'appimages/android-icon-192x192.png'
+];
 
 self.addEventListener('install', function(event) {
   // Cache everything in CACHED_URLS. Installation will fail if something fails to cache
