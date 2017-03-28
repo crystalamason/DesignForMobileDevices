@@ -1,13 +1,13 @@
 var CACHE_NAME = 'gih-cache-v5';
-var BASE_PATH = '/DesignForMobileDevices/'
+var BASE_PATH = '/DesignForMobileDevices/';
 var CACHED_URLS = [
   // Our HTML
   BASE_PATH + 'first.html',
     // Stylesheets and fonts
     BASE_PATH + 'min-style.css',
     BASE_PATH + 'styles.css',
-    BASE_PATH + 'https://fonts.googleapis.com/icon?family=Material+Icons',
-    BASE_PATH + 'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en',
+    'https://fonts.googleapis.com/icon?family=Material+Icons',
+    'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en',
   // JavaScript
     BASE_PATH + 'material.js',
     BASE_PATH + 'manifest.json',
