@@ -25,23 +25,7 @@ var CACHED_URLS = [
     BASE_PATH + 'appimages/ms-icon-70x70.png',
     BASE_PATH + 'appimages/ms-icon-144x144.png',
     BASE_PATH + 'appimages/ms-icon-150x150.png',
-    BASE_PATH + 'appimages/ms-icon-310x310.png',
-    BASE_PATH + 'eventsimages/example-blog01.jpg',
-    BASE_PATH + 'eventsimages/example-blog02.jpg',
-    BASE_PATH + 'eventsimages/example-blog03.jpg',
-    BASE_PATH + 'eventsimages/example-blog04.jpg',
-    BASE_PATH + 'eventsimages/example-blog05.jpg',
-    BASE_PATH + 'eventsimages/example-blog06.jpg',
-    BASE_PATH + 'eventsimages/example-blog07.jpg',
-    BASE_PATH + 'eventsimages/example-work01.jpg',
-    BASE_PATH + 'eventsimages/example-work02.jpg',
-    BASE_PATH + 'eventsimages/example-work03.jpg',
-    BASE_PATH + 'eventsimages/example-work04.jpg',
-    BASE_PATH + 'eventsimages/example-work05.jpg',
-    BASE_PATH + 'eventsimages/example-work06.jpg',
-    BASE_PATH + 'eventsimages/example-work07.jpg',
-    BASE_PATH + 'eventsimages/example-work08.jpg',
-    BASE_PATH + 'eventsimages/example-work09.jpg',  
+    BASE_PATH + 'appimages/ms-icon-310x310.png', 
     // JavaScript
     BASE_PATH + 'offline-map.js',
     BASE_PATH + 'material.js',
@@ -94,6 +78,35 @@ self.addEventListener('fetch', function(event) {
         return caches.match('offline-map.js');
       })
     );
+      
+      // Handle requests for events JSON file
+  } else if (requestURL.pathname === BASE_PATH + 'events.json') {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(function(cache) {
+        return fetch(event.request).then(function(networkResponse) {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        }).catch(function() {
+          return caches.match(event.request);
+        });
+      })
+    );
+  // Handle requests for event images.
+  } else if (requestURL.pathname.includes('/eventsimages/')) {
+    event.respondWith(
+      caches.open(CACHE_NAME).then(function(cache) {
+        return cache.match(event.request).then(function(cacheResponse) {
+          return cacheResponse||fetch(event.request).then(function(networkResponse) {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          }).catch(function() {
+            return cache.match('appimages/event-default.png');
+          });
+        });
+      })
+    );
+
+      
   } else if (
     CACHED_URLS.includes(requestURL.href) ||
     CACHED_URLS.includes(requestURL.pathname)
