@@ -51,7 +51,11 @@ var CACHED_URLS = [
     'https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     BASE_PATH + 'min-style.css',
-    BASE_PATH + 'styles.css'
+    BASE_PATH + 'styles.css',
+    BASE_PATH + 'appimages/event-default.png',
+    BASE_PATH + 'scripts.js',
+    BASE_PATH + 'events.json'
+
 ];
 
 var googleMapsAPIJS = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDt5NVcT2vXTsfJ2B5F58dHLTnpsUfrHDk&callback=initMap';
